@@ -28,7 +28,7 @@ def register(request):
 
 		user = User.objects.get(first_name=first_name)
 		request.session['id'] = user
-		return redirect('/dashboard')
+		return redirect('/')
 
 def login(request):
 	#sets post data equal to variables. Then filters the email to see if it is equal to one saved in the database previously with the register form. 
@@ -50,4 +50,10 @@ def login(request):
 def logout(request):
 	request.session.clear()
 	return redirect('/')
+
+def dashboard(request):
+	context = {
+		"user": User.objects.filter(id=request.session['id'])
+	}
+	return render(request, "blog/dashboard.html", context)
 
