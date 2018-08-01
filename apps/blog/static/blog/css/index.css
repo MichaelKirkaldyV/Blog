@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.container{
+	height: 800px;
+	width: 1000px;
+	background-color: #edf0f5;
+}
+
+/********************************************************************/
+
+								/*HEADER*/
+
+/********************************************************************/
+
+.header{
+	height: 60px;
+	width: 960px;
+	background-color: #3b5998;
+	padding: 20px;
+}
+
+.header, h1{
+	color: white;
+	font-family: arial;
+	display: inline-block;
+}
+
+.header h1{
+	margin-top: 15px;
+}
+
+.header_form{
+	display: inline-block;
+	vertical-align: top;
+	height: 55px;
+	width: 400px;
+	margin-bottom: 50px;
+	margin-left: 340px;
+	margin-top: 20px;
+}
+
+.header_form label{
+	display: block;
+}
+
+.label2{
+	margin-left: 205px;
+	margin-top: -35px;
+}
+
+/********************************************************************/
+
+								/*BODY-RIGHTSIDE*/
+
+/********************************************************************/
+
+.right_side{
+	height: 600px;
+	width: 450px;
+	display: inline-block;
+	margin: 15px;
+}
+
+.left_side{
+	height: 600px;
+	width: 450px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 15px;
+}
+
+.right_side h3{
+	margin-top: 20px;
+}
+
+.title{
+	margin: 30px;
+	font-family: arial;
+}
+
+.right_side > h1 h3{
+	margin: 30px;
+	font-family: arial;
+
+}
+
+.sign_up{
+	margin: 20px auto;
+	width: 320px;
+	margin-top: 20px;
+}
+
+.label3{
+	padding: 10px;
+	margin-bottom: 15px;
+	width: 300px;
+}
+
+input {
+	border-radius: 5px;
+}
+
+input[type="radio"]{
+	margin-left: 10px;
+}
+
+input[type="radio"] label{
+	font-family: arial;
+}
+
+input[type="text"]{
+	border: 2px solid steelblue;
+}
+
+input[type="password"]{
+	border: 2px solid steelblue;
+}
+
+.second_submit{
+	margin-top: 20px;
+	background-color: green;
+	color: white;
+	width: 70px;
+	height: 40px;
+	padding: 10px;
+}
+
+
+
+
