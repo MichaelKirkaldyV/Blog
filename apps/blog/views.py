@@ -69,9 +69,7 @@ def comment(request):
 	else:
 		quote = request.POST['quote']
 		user = User.objects.get(id=request.session['id'])
-		comment = Quote(quote=quote, added_by=user.first_name)
-		comment.save()
-		comment.user.add(user)
+		Quote.objects.create(quote=quote, user=user)
 		return redirect("/dashboard")
 
 def user_profile(request, id):

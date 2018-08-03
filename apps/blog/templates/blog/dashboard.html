@@ -20,7 +20,7 @@
 		</div>
 		<div class="body_bottom">
 			{% for quote in quotes %}
-				<a href="/user_profile/{{user.id}}"><h3>{{quote.added_by}}</h3></a>
+				<a href="/user_profile/{{quote.user.id}}"><h3>{{quote.added_by}}</h3></a>
 				{{quote.created_at}}
 				<h3>"{{quote.quote}}"</h3>
 				<hr>

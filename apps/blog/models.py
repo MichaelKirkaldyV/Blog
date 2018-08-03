@@ -54,8 +54,7 @@ class Quote(models.Model):
 	quote = models.CharField(max_length=255)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
-	added_by = models.CharField(max_length=255, default="unknown")
-	user = models.ManyToManyField(User)
+	user = models.ForeignKey(User, related_name="quotes")
 	objects = QuoteManager()
 
 
