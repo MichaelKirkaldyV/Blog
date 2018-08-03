@@ -29,12 +29,15 @@ class UserManager(models.Manager):
 
 		return errors
 
-class ImageManager(models.Manager):
-	def validate_image(request, postData):
+class QuoteManager(models.Manager):
+	def validate_quote(request, postData):
 		errors = {}
 
-		if len(postData['name']) <= 0:
-			errors['name'] = "Field cannot be left blank"
+		if len(postData['quote']) > 100:
+			errors['quote'] = "100 characters or less"
+
+		if len(postData['quote']) == 0:
+			errors['quote'] = "Field cannot be blank"
 
 		return errors
 
@@ -47,12 +50,13 @@ class User(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 	objects = UserManager()
 
-class Image(models.Model):
-	name = models.CharField(max_length=255)
+class Quote(models.Model):
+	quote = models.CharField(max_length=255)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+	added_by = models.CharField(max_length=255, default="unknown")
 	user = models.ManyToManyField(User)
-	objects = ImageManager()
+	objects = QuoteManager()
 
 
 

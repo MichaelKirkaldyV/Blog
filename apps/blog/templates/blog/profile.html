@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Profile</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/profile.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Quotebook</h1>
+		</div>
+		<div class="body">
+			<h1>{{user.first_name}}</h1>
+			{% for quote in quotes %}
+				<h2>"{{quote.quote}}"</h2>
+				{{quote.created_at}}
+			{% endfor %}
+		</div>
+		
+	</div>
+
+</body>
+</html>

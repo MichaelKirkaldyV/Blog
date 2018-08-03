@@ -8,5 +8,8 @@ urlpatterns = [
   url(r'^login$', views.login),
   url(r'^logout$', views.logout),
   url(r'^dashboard$', views.dashboard),
+  url(r'^comment$', views.comment),
+  url(r'^user_profile/(?P<id>\d+)$', views.user_profile),
+
 
 ]

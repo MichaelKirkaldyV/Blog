@@ -3,9 +3,31 @@
 <head>
 	<title>Dashboard</title>
 	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/dashboard.css' %}">
 </head>
 <body>
-	<h1>Welcome!</h1>
+	<div class="container">
+		<div class="header">
+			<h1>Welcome, {{user.first_name}}</h1>
+			<a href="/logout">Logout</a>
+		</div>
+		<div class="body_top">
+			<form action="/comment" method="post">
+				{% csrf_token %}
+				<textarea name="quote"></textarea>
+				<input type="submit" name="submit" value="Post">
+			</form>			
+		</div>
+		<div class="body_bottom">
+			{% for quote in quotes %}
+				<a href="/user_profile/{{user.id}}"><h3>{{quote.added_by}}</h3></a>
+				{{quote.created_at}}
+				<h3>"{{quote.quote}}"</h3>
+				<hr>
+			{% endfor %}
 
+		</div>
+		
+	</div>
 </body>
 </html>

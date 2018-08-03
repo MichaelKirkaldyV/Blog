@@ -27,7 +27,7 @@ def register(request):
 		User.objects.create(first_name=first_name, last_name=last_name, email=email, password=hashed_pw)
 
 		user = User.objects.get(first_name=first_name)
-		request.session['id'] = user
+		request.session['id'] = user.id
 		return redirect('/')
 
 def login(request):
@@ -53,7 +53,34 @@ def logout(request):
 
 def dashboard(request):
 	context = {
-		"user": User.objects.filter(id=request.session['id'])
+		"user": User.objects.get(id=request.session['id']),
+		"quotes": Quote.objects.all()
 	}
 	return render(request, "blog/dashboard.html", context)
+
+def comment(request):
+	errors = Quote.objects.validate_quote(request.POST)
+
+	if len(errors):
+		for tag, error in errors.iteritems():
+			messages.error(request, error)
+		return redirect('/dashboard')
+
+	else:
+		quote = request.POST['quote']
+		user = User.objects.get(id=request.session['id'])
+		comment = Quote(quote=quote, added_by=user.first_name)
+		comment.save()
+		comment.user.add(user)
+		return redirect("/dashboard")
+
+def user_profile(request, id):
+	user = User.objects.get(id=id)
+	context = {
+		"user": User.objects.get(id=id),
+		"quotes": Quote.objects.filter(added_by=user.first_name)
+	}
+	return render(request, "blog/profile.html", context)
+
+
 
